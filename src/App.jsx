@@ -133,6 +133,7 @@ const App = () => {
                 totalResults={totalResults}
                 onPageChange={handlePageChange}
                 favorites={favorites}
+                viewMode={viewMode}
                 onToggleFavorite={toggleFavorite}
               />
             )}

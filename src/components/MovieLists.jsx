@@ -8,6 +8,7 @@ const MovieLists = ({
   onPageChange,
   favorites,
   onToggleFavorite,
+  viewMode,
 }) => {
   const totalPages = Math.ceil(totalResults / 10);
 
@@ -24,7 +25,7 @@ const MovieLists = ({
         ))}
       </div>
 
-      {totalResults > 10 && (
+      {totalResults > 10 && viewMode === "all" && (
         <div className="flex items-center justify-center mt-8 space-x-4">
           <button
             onClick={() => onPageChange(currentPage - 1)}
