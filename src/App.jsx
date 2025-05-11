@@ -20,6 +20,9 @@ const App = () => {
   // Save favorites to localStorage when they change
   useEffect(() => {
     localStorage.setItem("movieFavorites", JSON.stringify(favorites));
+    if (favorites.length === 0) {
+      setViewMode("all");
+    }
   }, [favorites]);
 
   const showNotification = (text, duration = 2000) => {
@@ -62,6 +65,10 @@ const App = () => {
         showNotification(data.Error || "No results found");
         setMovies([]);
         setTotalResults(0);
+      }
+
+      if (viewMode === "favorites" && favorites.length == 0) {
+        setViewMode("all");
       }
     } catch (error) {
       showNotification("Error fetching data. Please try again.");
